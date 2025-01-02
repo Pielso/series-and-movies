@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movies</title>
+</head>
+<body>
+
+<h1>Movies</h1>
+
+
+<table cellpadding="5px">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>RATING</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="movie:${movies}">
+        <td th:text="${movie.getId()}"></td>
+        <td th:text="${movie.getName()}"></td>
+        <td th:text="${movie.getRating()}"></td>
+    </tr>
+
+
+    </tbody>
+
+
+</table>
+
+<form action="/movies" method="post">
+
+    <input type="text" name="name" placeholder="Name"> <br>
+    <input type="text" name="rating" placeholder="Rating"> <br>
+    <button type="submit">SAVE MOVIE</button>
+
+</form>
+
+
+<form action="seed-movies" method="post">
+    <button type="submit">SEED INITIAL MOVIES</button>
+</form>
+
+
+</body>
+</html>

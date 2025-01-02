@@ -22,9 +22,21 @@ public class SerieService {
     }
 
     public void seedInitialSeries(){
+
+        long totalSeriesCount = serieRepository.count();
+
+        if (totalSeriesCount > 0){
+            return;
+        }
+
         Serie bsg = new Serie("Battlestar Galactica", 10);
         Serie fringe = new Serie("Fringe", 10);
         Serie sttng = new Serie("Star Trek: The Next Generation", 10);
+
+        serieRepository.save(bsg);
+        serieRepository.save(fringe);
+        serieRepository.save(sttng);
+
     }
 
 }
