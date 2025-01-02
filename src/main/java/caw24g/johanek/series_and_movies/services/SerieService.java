@@ -21,4 +21,10 @@ public class SerieService {
         serieRepository.save(serie);
     }
 
+    public void seedInitialSeries(){
+        Serie bsg = new Serie("Battlestar Galactica", 10);
+        Serie fringe = new Serie("Fringe", 10);
+        Serie sttng = new Serie("Star Trek: The Next Generation", 10);
+    }
+
 }

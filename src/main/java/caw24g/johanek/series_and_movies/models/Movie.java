@@ -6,24 +6,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Serie {
+public class Movie {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private int rating;
 
-    public Serie(String name, int rating){
-        this.name = name;
-        this.rating = rating;
-    }
-
-    public Serie(){
-
-    }
-
-
     // Getters & Setters
+
 
     public Long getId() {
         return id;
