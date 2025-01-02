@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Single Movie</title>
+
+</head>
+
+<body>
+
+<h1>Single Movie View</h1>
+
+<h2 th:text="${movie.getName()}"></h2>
+
+<p>
+    <b>Rating: </b>
+    <span th:text="${movie.getRating()}"></span>
+</p>
+
+<hr>
+
+<!-- Här vill jag ha knappar för att uppdatera resursen -->
+
+<form action="movies/update" method="post">
+    <input type="number" name="id" th:value="${movie.getId()}">
+    <input type="text" name="name" placeholder="Name">
+    <input type="number" name="rating" placeholder="Rating">
+            <button type="submit">Change</button>
+            <br>
+
+    </form>
+
+
+</form>
+<hr>
+<a href="http://localhost:8080/home" class="nav-menu-button">HOME</a>
+<hr>
+
+<!-- Denna ska kanske tas bort sen innan inlämning -->
+
+<form action="" method="post">
+    <button type="submit">Delete</button>
+</form>
+
+</body>
+</html>

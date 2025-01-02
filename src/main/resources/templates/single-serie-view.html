@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Single Serie</title>
+
+</head>
+
+<body>
+
+<h1>Single Serie</h1>
+
+<h2 th:text="${serie.getName()}"></h2>
+
+<p>
+    <b>Rating: </b>
+    <span th:text="${serie.getRating()}"></span>
+</p>
+
+<hr>
+
+<form action="" method="post">
+    <button type="submit">Delete</button>
+</form>
+
+</body>
+</html>

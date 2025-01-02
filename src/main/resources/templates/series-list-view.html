@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Series</title>
+</head>
+<body>
+
+<h1>Series</h1>
+
+<table cellpadding="5px">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>RATING</th>
+        <th>EDIT</th>
+
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="serie: ${series}">
+
+        <td th:text="${serie.getId()}"></td>
+        <td th:text="${serie.getName()}"></td>
+        <td th:text="${serie.getRating()}"></td>
+        <td> <a style="text-decoration: none" th:href="@{/series/{id}(id = ${serie.getId()})}"> >> </a> </td>
+
+
+    </tr>
+
+    </tbody>
+</table>
+
+<hr>
+
+<form action="/series" method="post">
+    <input type="text" name="name" placeholder="Name"> <br>
+    <input type="text" name="rating" placeholder="Rating"> <br>
+    <button type="submit">SAVE SERIE</button>
+</form>
+
+<hr>
+
+<form action="seed-series" method="post">
+    <button type="submit">SEED INITIAL SERIES</button>
+</form>
+
+</body>
+</html>
