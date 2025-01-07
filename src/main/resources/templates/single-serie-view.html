@@ -1,27 +1,49 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="/stylesheet.css">
 <head>
     <meta charset="UTF-8">
     <title>Single Serie</title>
-
 </head>
 
 <body>
-
-<h1>Single Serie</h1>
-
-<h2 th:text="${serie.getName()}"></h2>
-
-<p>
-    <b>Rating: </b>
-    <span th:text="${serie.getRating()}"></span>
-</p>
+<header class="header">
+    <h1 th:text="${serie.getName()}"></h1>
+    Rating:
+    <h4 th:text="${serie.getRating()}"></h4></div>
+</header>
 
 <hr>
 
-<form action="" method="post">
-    <button type="submit">Delete</button>
-</form>
+<table class="table">
+    <tr>
+        <td align="center">
+            <form action="/series/update" method="post">
+                <input type="number" hidden="hidden" name="id" th:value="${serie.getId()}">
+                <input type="text" name="name" th:value="${serie.getName()}" required> <br>
+                <input type="number" name="rating" th:value="${serie.getRating()}" required> <br> <br>
+                <button type="submit">Change</button>
+            </form>
+        </td>
+    </tr>
+</table>
 
+
+
+<hr>
+<table class="table" style="background-color: darksalmon">
+    <tr>
+        <td align="center">
+            <form action="" method="post">
+                <button type="submit">--/*\--!DELETE!--/*\--</button>
+            </form>
+        </td>
+    </tr>
+</table>
+
+<hr>
+
+
+<a href="http://localhost:8080/home" class="nav-menu-button">HOME</a>
 </body>
 </html>

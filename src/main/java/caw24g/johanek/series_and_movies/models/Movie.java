@@ -13,8 +13,6 @@ public class Movie {
     private String name;
     private int rating;
 
-
-
     public Movie(String name, int rating){
         this.name = name;
         this.rating = rating;

@@ -49,4 +49,11 @@ public class SerieService {
     public void deleteSerie(long id) {
         serieRepository.deleteById(id);
     }
+
+    public void updateSerieById(Serie serie, long id) {
+        Serie oldSerie = getSingleSerie(id);
+        oldSerie.setName(serie.getName());
+        oldSerie.setRating(serie.getRating());
+        serieRepository.save(oldSerie);
+    }
 }

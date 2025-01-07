@@ -1,45 +1,57 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="/stylesheet.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" http-equiv="content-type" charset="utf-8">
 <head>
     <meta charset="UTF-8">
     <title>Series</title>
 </head>
 <body>
-
-<h1>Series</h1>
-
-<table cellpadding="5px">
+<header class="header">
+    <h1>Series</h1>
+</header>
+<br>
+<hr>
+<table class="table">
     <thead>
+    <td align="center" style="font-size: 20px">
+        ADD NEW SERIE
+    </td>
+    </thead>
     <tr>
-        <th>ID</th>
-        <th>NAME</th>
-        <th>RATING</th>
-        <th>EDIT</th>
+        <td align="center">
+            <form action="/series" method="post">
+                <input type="text" name="name" placeholder="Name" required> <br>
+                <input type="text" name="rating" placeholder="Rating" required> <br> <br>
+                <button type="submit" style="font-size: 15px">SAVE SERIE</button>
+            </form>
+        </td>
+    </tr>
+</table>
 
+<hr>
+<br>
+<hr>
+
+<table class="table">
+    <thead class="table-head" style="text-align: left">
+    <tr>
+        <th class="table-head-cell">ID</th>
+        <th class="table-head-cell">NAME</th>
+        <th class="table-head-cell">RATING</th>
+        <th class="table-head-cell">EDIT</th>
     </tr>
     </thead>
+
     <tbody>
-
     <tr th:each="serie: ${series}">
-
         <td th:text="${serie.getId()}"></td>
         <td th:text="${serie.getName()}"></td>
         <td th:text="${serie.getRating()}"></td>
         <td> <a style="text-decoration: none" th:href="@{/series/{id}(id = ${serie.getId()})}"> >> </a> </td>
-
-
     </tr>
-
     </tbody>
 </table>
-
-<hr>
-
-<form action="/series" method="post">
-    <input type="text" name="name" placeholder="Name"> <br>
-    <input type="text" name="rating" placeholder="Rating"> <br>
-    <button type="submit">SAVE SERIE</button>
-</form>
 
 <hr>
 

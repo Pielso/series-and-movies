@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="/stylesheet.css">
 <head>
     <meta charset="UTF-8">
     <title>Single Movie</title>
-
 </head>
 
 <body>
+<header class="header">
+    <h1>Single Movie View</h1>
+</header>
 
-<h1>Single Movie View</h1>
+
 
 <h2 th:text="${movie.getName()}"></h2>
 
@@ -21,17 +24,13 @@
 
 <!-- Här vill jag ha knappar för att uppdatera resursen -->
 
-<form action="movies/update" method="post">
-    <input type="number" name="id" th:value="${movie.getId()}">
-    <input type="text" name="name" placeholder="Name">
-    <input type="number" name="rating" placeholder="Rating">
-            <button type="submit">Change</button>
-            <br>
-
-    </form>
-
-
+<form method="post" action="/movies/update">
+    <input type="number" hidden="hidden" name="id" th:value="${movie.getId()}">
+    <input type="text" name="name" th:value="${movie.getName()}" required>
+    <input type="number" name="rating" th:value="${movie.getRating()}" required>
+    <button type="submit">Change</button>
 </form>
+
 <hr>
 <a href="http://localhost:8080/home" class="nav-menu-button">HOME</a>
 <hr>

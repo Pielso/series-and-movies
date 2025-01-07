@@ -52,5 +52,11 @@ public class SerieController {
         return "redirect:/series";
     }
 
+    @PostMapping("/series/update")
+    public String updateSerie(long id, @ModelAttribute Serie serie){
+        serieService.updateSerieById(serie, id);
+        return "redirect:/series";
+    }
+
 
 }

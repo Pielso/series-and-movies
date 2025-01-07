@@ -48,8 +48,8 @@ public class MovieController {
     }
 
     // Får inte denna att fungera
-    @PutMapping("/movies/update")
-    public String updateMovie(@ModelAttribute long id, @ModelAttribute Movie movie){
+    @PostMapping("/movies/update")
+    public String updateMovie(long id, @ModelAttribute Movie movie){
         movieService.updateMovieById(movie,id);
         return "redirect:/movies";
     }
