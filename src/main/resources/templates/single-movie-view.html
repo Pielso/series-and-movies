@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <link rel="stylesheet" href="/stylesheet.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" http-equiv="content-type" charset="utf-8">
 <head>
     <meta charset="UTF-8">
     <title>Single Movie</title>
@@ -8,38 +9,49 @@
 
 <body>
 <header class="header">
-    <h1>Single Movie View</h1>
+    <h1 th:text="${movie.getName()}"></h1>
+    Rating:
+    <h4 th:text="${movie.getRating()}"></h4>
 </header>
 
+<hr>
 
-
-<h2 th:text="${movie.getName()}"></h2>
-
-<p>
-    <b>Rating: </b>
-    <span th:text="${movie.getRating()}"></span>
-</p>
+<table class="table">
+    <tr>
+        <td align="center">
+            <form method="post" action="/movies/update">
+                <input type="number" hidden="hidden" name="id" th:value="${movie.getId()}">
+                <input type="text" name="name" th:value="${movie.getName()}" required> <br>
+                <input type="number" name="rating" th:value="${movie.getRating()}" required> <br> <br>
+                <button type="submit" style="font-size: 15px">CHANGE</button>
+            </form>
+        </td>
+    </tr>
+</table>
 
 <hr>
 
-<!-- Här vill jag ha knappar för att uppdatera resursen -->
-
-<form method="post" action="/movies/update">
-    <input type="number" hidden="hidden" name="id" th:value="${movie.getId()}">
-    <input type="text" name="name" th:value="${movie.getName()}" required>
-    <input type="number" name="rating" th:value="${movie.getRating()}" required>
-    <button type="submit">Change</button>
-</form>
+<table class="table" style="background-color: #c85f3a; padding: 5px">
+    <tr>
+        <td align="center">
+            <form action="" method="post">
+                <button type="submit" style="font-size: 15px"> -- DELETE -- </button>
+            </form>
+        </td>
+    </tr>
+</table>
 
 <hr>
-<a href="http://localhost:8080/home" class="nav-menu-button">HOME</a>
-<hr>
 
-<!-- Denna ska kanske tas bort sen innan inlämning -->
-
-<form action="" method="post">
-    <button type="submit">Delete</button>
-</form>
+<footer class="embed-footer">
+    <table width="100%">
+        <tr>
+            <td align="center">
+                <a href="http://localhost:8080/home">HOME</a>
+            </td>
+        </tr>
+    </table>
+</footer>
 
 </body>
 </html>

@@ -22,8 +22,8 @@
         <td align="center">
             <form action="/movies" method="post">
                 <input type="text" name="name" placeholder="Name" required> <br>
-                <input type="text" name="rating" placeholder="Rating" required> <br> <br>
-                <button type="submit">SAVE MOVIE</button>
+                <input type="number" name="rating" placeholder="Rating" required> <br> <br>
+                <button type="submit" style="font-size: 15px">SAVE MOVIE</button>
             </form>
         </td>
     </tr>
@@ -44,20 +44,34 @@
     </thead>
 
     <tbody>
-    <tr th:each="movie:${movies}">
+    <tr style="font-size: 20px" th:each="movie:${movies}">
         <td th:text="${movie.getId()}"> </td>
         <td th:text="${movie.getName()}"> </td>
         <td th:text="${movie.getRating()}"> </td>
-        <td> <a style="text-decoration: none" th:href="@{/movies/{id}(id = ${movie.getId()})}"> >> </a> </td>
+        <td> <a style="text-decoration: none" th:href="@{/movies/{id}(id = ${movie.getId()})}"> <img src="https://cdn3.iconfinder.com/data/icons/feather-5/24/edit-256.png" alt="link" height="48" width="48"> </a> </td>
     </tr>
     </tbody>
 </table>
 
 <hr>
-
 <form action="seed-movies" method="post">
     <button type="submit">SEED INITIAL MOVIES</button>
 </form>
+<br>
+<br>
+<br>
+
+
+
+<footer class="embed-footer">
+    <table width="100%">
+        <tr>
+            <td align="center">
+                <a href="http://localhost:8080/home">HOME</a>
+            </td>
+        </tr>
+    </table>
+</footer>
 
 </body>
 </html>

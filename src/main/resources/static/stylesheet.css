@@ -71,18 +71,20 @@ a{
 
 
 /* footer section*/
-.footer_section {
-    position: -ms-device-fixed; alignment-baseline: baseline;
-    background-color: #ffffff;
-    text-align: center;
+
+footer {
+    display: block;
+    width: 100%;
+    font-size: 20px;
+}
+.embed-footer{
+    background: #b6b6e6;
 }
 
-.footer_section p {
-    color: #00204a;
-    padding: 25px 0;
-    margin: 0;
+.embed-footer {
+    height: 35px;
+    padding: 6px;
+    position: fixed; bottom: 0
+
 }
 
-.footer_section p a {
-    color: inherit;
-}
