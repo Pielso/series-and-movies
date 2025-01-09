@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @Controller
@@ -15,12 +14,18 @@ public class MovieController {
     @Autowired
     private MovieService movieService;
 
+    /* At the fine url /movies, all movies in the repo are loaded onto a list, given an attribute name,
+    which then is accessed through Thymeleaf in the .html.
+     */
+
     @GetMapping("/movies")
     public String getMoviesHome(Model model){
-        List<Movie> allMovies = movieService.getAllMovies();
+        List <Movie> allMovies = movieService.getAllMovies();
         model.addAttribute("movies", allMovies);
         return "movies-list-view";
     }
+
+    // May possible be removed after checking with Master Of Code: Linus.
 
     @PostMapping("/seed-movies")
     public String seedInitialMovies(){
@@ -28,11 +33,15 @@ public class MovieController {
         return "redirect:/movies";
     }
 
+    // Create.
+
     @PostMapping("/movies")
     public String saveNewMovie(@ModelAttribute Movie movie){
         movieService.saveMovie(movie);
         return "redirect:/movies";
     }
+
+    // Read.
 
     @GetMapping("/movies/{id}")
     public String getSingleMovie(@PathVariable("id") long id, Model model){
@@ -41,19 +50,19 @@ public class MovieController {
         return "single-movie-view";
     }
 
-    @PostMapping("/movies/{id}")
-    public String deleteMovie(@PathVariable("id") long id){
-        movieService.deleteMovie(id);
-        return "redirect:/movies";
-    }
+    // Update.
 
-    // Får inte denna att fungera
     @PostMapping("/movies/update")
     public String updateMovie(long id, @ModelAttribute Movie movie){
         movieService.updateMovieById(movie,id);
         return "redirect:/movies";
     }
 
+    // Delete.
 
-
+    @PostMapping("/movies/{id}")
+    public String deleteMovie(@PathVariable("id") long id){
+        movieService.deleteMovie(id);
+        return "redirect:/movies";
+    }
 }

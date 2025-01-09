@@ -5,6 +5,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+/* I've read and seen examples that uses lombok here to automate and tidy up some things,
+but if I understand it correctly, lombok is used with @NoArgsConstructor and/or @AllArgsConstructor, which in our case wouldn't help much
+since we use an auto-incremented primary key, right?
+ */
+
 @Entity
 public class Serie {
     @Id
@@ -13,15 +18,18 @@ public class Serie {
     private String name;
     private int rating;
 
+    // Constructor with args for creating serie objects @ back-end, for seeding and testing.
+
     public Serie(String name, int rating){
         this.name = name;
         this.rating = rating;
     }
 
+    // Empty constructor that lets an empty body of serie to be created and then filled by user input from client-side.
+
     public Serie(){
 
     }
-
 
     // Getters & Setters
 

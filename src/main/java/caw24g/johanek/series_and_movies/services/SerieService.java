@@ -1,12 +1,9 @@
 package caw24g.johanek.series_and_movies.services;
 
-
-import caw24g.johanek.series_and_movies.models.Movie;
 import caw24g.johanek.series_and_movies.models.Serie;
 import caw24g.johanek.series_and_movies.repositories.SerieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -15,7 +12,7 @@ public class SerieService {
     @Autowired
     private SerieRepository serieRepository;
 
-    public List<Serie> getAllSeries(){
+    public List <Serie> getAllSeries(){
         return serieRepository.findAll();
     }
 
@@ -56,4 +53,14 @@ public class SerieService {
         oldSerie.setRating(serie.getRating());
         serieRepository.save(oldSerie);
     }
+
+    public Serie getLastSerieInDatabase(){
+        List <Serie> list = serieRepository.findAll();
+        return list.getLast();
+    }
+
+    public void deleteSerieByName(String name){
+        serieRepository.delete(serieRepository.findByName(name));
+    }
+
 }

@@ -4,8 +4,6 @@ import caw24g.johanek.series_and_movies.models.Movie;
 import caw24g.johanek.series_and_movies.repositories.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,13 +11,13 @@ import java.util.Optional;
 public class MovieService {
 
     @Autowired
-    public MovieRepository movieRepository;
+    private MovieRepository movieRepository;
 
     public MovieService(){
 
     }
 
-    public List<Movie> getAllMovies(){
+    public List <Movie> getAllMovies(){
         return movieRepository.findAll();
     }
 
@@ -64,6 +62,10 @@ public class MovieService {
     public Movie getLastMovieInDatabase(){
         List <Movie> list = movieRepository.findAll();
         return list.getLast();
+    }
+
+    public void deleteMovieByName(String name){
+        movieRepository.delete(movieRepository.findByName(name));
     }
 
 }
