@@ -13,8 +13,5 @@ Maybe it doesn't matter, or is it that DB-Keys always should be the object-type?
 @Repository
 public interface SerieRepository extends JpaRepository <Serie, Long> {
 
-    // Added this one for the method deleteByName.
-
-    Serie findByName(String name);
 }
 

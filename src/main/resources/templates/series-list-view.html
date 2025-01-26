@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <link rel="stylesheet" href="/stylesheet.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" http-equiv="content-type" charset="utf-8">
+
 <head>
     <meta charset="UTF-8">
     <title>Series</title>
@@ -14,15 +15,22 @@
 <hr>
 <table class="table">
     <thead>
-    <td align="center" style="font-size: 20px">
-        ADD NEW SERIE
-    </td>
+    <tr>
+        <td style="font-size: 20px; text-align: center">
+            ADD NEW SERIE
+        </td>
+    </tr>
+
     </thead>
     <tr>
-        <td align="center">
+        <td style="text-align: center">
             <form action="/series" method="post">
-                <input type="text" name="name" placeholder="Name" required> <br>
-                <input type="number" name="rating" placeholder="Rating" required> <br> <br>
+                <label>
+                    <input type="text" name="name" placeholder="Name" >
+                </label> <br>
+                <label>
+                    <input type="number" name="rating" placeholder="Rating" >
+                </label> <br> <br>
                 <button type="submit" style="font-size: 15px">SAVE SERIE</button>
             </form>
         </td>
@@ -30,6 +38,29 @@
 </table>
 
 <hr>
+
+<!-- I kept getting warnings (yellow) about Thymeleaf not being able to resolve the variables (it worked fine, but it bugged me, so I googled it.
+        I didn't manage to resolve it for the getters down below -->
+
+<!--/*@thymesVar id="message" type="String"*/-->
+<div th:if="${message}">
+    <table class="table" style="background-color: #ebfa51">
+        <tr>
+            <td th:text="${message}" style="text-align: center"></td>
+        </tr>
+    </table>
+</div>
+
+<!--/*@thymesVar id="error" type="String"*/-->
+<div th:if="${error}">
+    <table class="table" style="background-color: #e84f19">
+        <tbody>
+        <tr th:each="error:${error}">
+            <td th:text="${error}" style="text-align: center"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 <br>
 <hr>
 
@@ -64,9 +95,9 @@
 
 
 <footer class="embed-footer">
-    <table width="100%">
+    <table class="table" style="min-height: 100%">
         <tr>
-            <td align="center">
+            <td style="text-align: center">
                 <a href="http://localhost:8080/home">HOME</a>
             </td>
         </tr>

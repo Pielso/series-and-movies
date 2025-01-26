@@ -12,8 +12,4 @@ Maybe it doesn't matter, or is it that DB-Keys always should be the object-type?
 
 @Repository
 public interface MovieRepository extends JpaRepository <Movie, Long> {
-
-    // Added this one for the method deleteByName.
-
-    Movie findByName(String name);
 }

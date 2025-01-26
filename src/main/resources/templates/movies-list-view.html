@@ -14,15 +14,23 @@
 <hr>
 <table class="table">
     <thead>
-    <td align="center" style="font-size: 20px">
-        ADD NEW MOVIE
-    </td>
+    <tr>
+        <td style="font-size: 20px; text-align: center">
+            ADD NEW MOVIE
+        </td>
+    </tr>
+
     </thead>
     <tr>
-        <td align="center">
+        <td style="text-align: center">
             <form action="/movies" method="post">
-                <input type="text" name="name" placeholder="Name" required> <br>
-                <input type="number" name="rating" placeholder="Rating" required> <br> <br>
+                <label>
+                    <input type="text" name="name" placeholder="Name" />
+                </label>
+                <br>
+                <label>
+                    <input type="number" name="rating" placeholder="Rating" >
+                </label> <br> <br>
                 <button type="submit" style="font-size: 15px">SAVE MOVIE</button>
             </form>
         </td>
@@ -30,6 +38,30 @@
 </table>
 
 <hr>
+
+<!-- I kept getting warnings (yellow) about Thymeleaf not being able to resolve the variables (it worked fine, but it bugged me, so I googled it.
+        I didn't manage to resolve it for the getters down below -->
+
+<!--/*@thymesVar id="message" type="String"*/-->
+<div th:if="${message}">
+    <table class="table" style="background-color: #ebfa51">
+        <tr>
+            <td th:text="${message}" style="text-align: center"></td>
+        </tr>
+    </table>
+</div>
+
+<!--/*@thymesVar id="error" type="String"*/-->
+<div th:if="${error}">
+    <table class="table" style="background-color: #e84f19">
+        <tbody>
+        <tr th:each="error:${error}">
+            <td th:text="${error}" style="text-align: center"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
 <br>
 <hr>
 
@@ -45,9 +77,15 @@
 
     <tbody>
     <tr style="font-size: 20px" th:each="movie:${movies}">
+        <!--/*@thymesVar id="getId" type="java.lang.Long"*/-->
         <td th:text="${movie.getId()}"> </td>
+
+        <!--/*@thymesVar id="getName" type="java.lang.String"*/-->
         <td th:text="${movie.getName()}"> </td>
+
+        <!--/*@thymesVar id="getName" type="java.lang.Integer"*/-->
         <td th:text="${movie.getRating()}"> </td>
+
         <td> <a style="text-decoration: none" th:href="@{/movies/{id}(id = ${movie.getId()})}"> <img src="https://cdn3.iconfinder.com/data/icons/feather-5/24/edit-256.png" alt="link" height="48" width="48"> </a> </td>
     </tr>
     </tbody>
@@ -61,13 +99,11 @@
 <br>
 <br>
 
-
-
 <footer class="embed-footer">
-    <table width="100%">
+    <table class="table" style="min-height: 100%">
         <tr>
-            <td align="center">
-                <a href="http://localhost:8080/home">HOME</a>
+            <td style="text-align: center">
+                <a href="/home">HOME</a>
             </td>
         </tr>
     </table>
