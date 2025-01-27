@@ -1,0 +1,25 @@
+services:
+  series-and-movies:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      SMAPP_DB_URL: "jdbc:mysql://mysql-db:3306/series-movies?createDatabaseIfNotExist=true"
+      SMAPP_USERNAME: root
+      SMAPP_PASSWORD: +?.5griFFeLt4vla
+
+  mysql-db:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: +?.5griFFeLt4vla
+      MYSQL_DATABASE: series-and-movies
+      MYSQL_USER: root
+      MYSQL_PASSWORD: +?.5griFFeLt4vla
+
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
