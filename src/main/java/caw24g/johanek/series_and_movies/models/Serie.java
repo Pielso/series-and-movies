@@ -19,11 +19,11 @@ public class Serie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty(message = "You need to provide a title for the serie")
+    @NotEmpty
     private String name;
 
-    @NotNull(message = "Don't put in blank fields. Rate the serie.")
-    @Range(min = 1, max = 10, message = "The rating must be between 1 - 10")
+    @NotNull
+    @Range(min = 1, max = 10)
     private int rating;
 
     // Constructor with args for creating serie objects @ back-end, for seeding and testing.

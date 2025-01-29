@@ -16,7 +16,7 @@ import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(MovieController.class)
-public class MovieTests {
+public class MovieControllerTests {
 
     @Autowired
     MockMvc mockMvc;

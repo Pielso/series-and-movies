@@ -38,7 +38,7 @@ public class SerieController {
         return "series-list-view";
     }
 
-    // Initial seed (21 series) for the Docker Container.
+    // Initial seed (24 series) for the Docker Container.
 
     @PostMapping("/seed-series")
     public String seedInitialSeries(){
@@ -49,7 +49,7 @@ public class SerieController {
 
     // Create.
 
-    /* I realize that there is an opportunity for refactoring here, due to the repeated code in save and update, and I did give it a shot,
+    /* I realize that there is an opportunity for refactoring (extracting) here, due to the repeated code in save and update, and I did give it a shot,
     but I didn't manage to find a clean solution. Sure one can extract the check for errors,
     but since the RedirectAttributes, BindingResults (and in update the HttpServletRequest) needs to be passed on, I felt it was spaghetti?
     tl;dr - A more competent dev would surely refactor these (save and update) but as for now, six months after knowing nothing, this will have to do.
@@ -86,7 +86,7 @@ public class SerieController {
     }
 
     // Update.
-    /* I realize that there is an opportunity for refactoring here, due to the repeated code in save and update, and I did give it a shot,
+    /* I realize that there is an opportunity for refactoring (extracting) here, due to the repeated code in save and update, and I did give it a shot,
     but I didn't manage to find a clean solution. Sure one can extract the check for errors,
     but since the RedirectAttributes, BindingResults (and in update the HttpServletRequest) needs to be passed on, I felt it was spaghetti?
     tl;dr - A more competent dev would surely refactor these (save and update) but as for now, six months after knowing nothing, this will have to do.
@@ -116,10 +116,11 @@ public class SerieController {
     // Delete. - No exceptions handled since I think they cannot occur?
 
     @PostMapping("/series/{id}")
-    public String deleteSerie(@PathVariable("id") long id, RedirectAttributes redirectAttributes){
+    public String deleteSerie(@PathVariable("id") long id, RedirectAttributes rdMessage){
 
         String serieDeleted = serieService.deleteSerieById(id);
-        redirectAttributes.addFlashAttribute("message", serieDeleted);
+        rdMessage.addFlashAttribute("message", serieDeleted);
         return "redirect:/series";
     }
 }
+

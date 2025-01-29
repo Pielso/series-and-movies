@@ -14,28 +14,6 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
-      # I understand that all these steps are not necessary,
-      # but it was during this course that I understood that the Maven 'Lifecycle',
-      # really are steps in a cycle. I don't understand them fully yet, but I wanted to keep it like this,
-      # on the chance that I might learn a thing or two about the different steps.
-
-      - name: Clean
-        run: mvn -B clean --file pom.xml
-
-      - name: Validate
-        run: mvn -B validate --file pom.xml
-
-      - name: Compile
-        run: mvn -B compile --file pom.xml
-
-      - name: Test
-        run: mvn -B test --file pom.xml
-
-      - name: Package project
-        run: mvn -B package --file pom.xml
-
-      # Would probably be fine to only keep install, since that runs the tests, and automated testing was the focus of this course.
-
       - name: Install project
         run: mvn -B install --file pom.xml
 
