@@ -11,19 +11,32 @@ A Spring / Thymeleaf webapp that handles two entities (Series & Movies) with bas
 Requirements for the assignment also included:
 (Doubles as a list of content).
 
+- Structure
 - UML-Diagrams
-    - Class Diagram
-    - Sequence Diagram
-    - State Diagram
-    - Activity Diagram
-    - Use Case Diagram
+  - Class Diagram
+  - Sequence Diagram
+  - State Diagram
+  - Activity Diagram
+  - Use Case Diagram
 - Docker w/ Docker Compose for the Database
 - Automated testing with:
-    - jUnit + Mockito
-    - Cucumber (rudimentary)
+  - jUnit + Mockito
+  - Cucumber (rudimentary)
 - Successful build on push through GitHub Actions
 - Some custom exception handling
+- Future improvements
 - This readme
+
+## Structure
+
+When Main runs it exposes the controller methods @ localhost:8080/ where the intended "first one" is /home.
+From that user can choose to view /series or /movies. In each one of them user can view the current list of Series/Movies in the DB.
+On this page there is a html-form, where user can input `name` and `rating` and Save a new Serie/Movie.
+There is also a seed-button that seeds the db with initial Series/Movie, only if the DB is empty.
+Each individual Serie/Movie, then has a link to a page /series/{id} for that specific Serie/Movie.
+Here is another html-form that user can use to update the `name` and/or `rating` of that Serie/Movie.
+There is also a delete button for that Serie/Movie.
+
 
 ## UML
 
@@ -41,7 +54,7 @@ The other diagram that was a little bit confounding was the class diagram.
 I have to go back and study the arrows more. Seems like a thing that is a me-problem,
 you know like some people are just blind to numbers or tunes or letters. To me almost every way of "arrowing" can make sense given a change of perspective. 😊
 
-> When a GlobalExceptionHandler listens to an Exception, that is annotated in the entity, validated in the controller, but thrown in the service method, where do i put the arrow,
+> When a GlobalExceptionHandler listens to an Exception, that is annotated in the entity, validated in the controller, but thrown in the service method, where do I put the arrow,
 and does the Handler "listen" which points to the exception, or is the exception thrown in the direction of the Handler?
 
 ## Docker w/ Docker Compose
@@ -77,7 +90,7 @@ but I feel that the probably work best as a tests-first, develop new features' f
 ## Some Custom Exception Handling
 
 This was also new to me, and I think, now in retrospect, my favorite part even if it didn't turn out quite as nice as I hoped.
-I really made an effort to get specific error messages back to user (specific to what input was invalid), but due to this having to also be ready for release (a.k.a "assignment due date"), I had to compromise.
+I really made an effort to get specific error messages back to user (specific to what input was invalid), but due to this having to also be ready for release (a.k.a. "assignment due date"), I had to compromise.
 
 The app has two entities, but they are handled in the exact same manner so here I will describe the exceptions I wanted to handle in one (but it's the exact same for the other):
 
@@ -102,6 +115,14 @@ since it allowed itself to be handled in the Handler that listened to `Transacti
 Long story long, I ended up refactoring everything so that whatever invalid from above, user is prompted with:
 
 **Fields may not be empty, and rating must be between 1-10.**
+
+## Future Improvements
+
+Going forward with this app, I would implement a sorting function for the list of Series/Movies, with options of sorting by name (alphabetically) or by rating.
+Furthermore, I would probably move the delete function to the list-view, for increased ease-of-use.
+If I had the skills, it would be fun to introduce Actor as a new entity, which would be a property that each Serie/Movie has (List of Actors).
+Then functions like getting a list of Actors that are most frequent in the current DB of Series/Movies could be done.
+That would however require knowing how to handle relations in DB, which is our next course.
 
 ## This Readme
 
